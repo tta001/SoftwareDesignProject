@@ -36,34 +36,85 @@ public class GroupOfCardsTest {
     @AfterEach
     public void tearDown() {
     }
+    
+    
+    /**
+     * Test of constructor method, of class GroupOfCards.
+     */
+    @Test
+    public void testGroupOfCardsGood() {
+        boolean access = false;
+        System.out.println("constructor good");
+        GroupOfCards instance = new GroupOfCards();
+        if (!(String.valueOf(instance)).isEmpty()) {
+            access = true;
+            assertTrue(access);
+        }
+    }
+    
+    @Test
+    public void testGroupOfCardsBad() {
+        boolean access = false;
+        System.out.println("constructor bad");
+        GroupOfCards instance = new GroupOfCards();
+        if ((String.valueOf(instance)).isEmpty()) {
+            access = true;
+            assertTrue(access);
+        }
+    }
+
+    @Test
+    public void testGroupOfCardsBoundary() {
+        boolean access = false;
+        System.out.println("constructor boundary");
+        GroupOfCards instance = new GroupOfCards();
+        if (!(String.valueOf(instance)).isEmpty()) {
+            access = true;
+            assertTrue(access);
+        }
+    }    
 
     /**
      * Test of get method, of class GroupOfCards.
      */
     @Test
-    public void testGet() {
-        System.out.println("get");
-        int n = 0;
+    public void testGetGood() {
+        System.out.println("get good");
+        int n = 2;
+        boolean access = false;
         GroupOfCards instance = new GroupOfCards();
-        Card expResult = null;
         Card result = instance.get(n);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        if (!(String.valueOf(instance.get(n))).isEmpty()) {
+            access = true;
+            assertTrue(access);
+        }
     }
-
-    /**
-     * Test of toString method, of class GroupOfCards.
-     */
+    
     @Test
-    public void testToString() {
-        System.out.println("toString");
+    public void testGetBad() {
+        int n = 14;
         GroupOfCards instance = new GroupOfCards();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean thrown = false;
+        try {
+            instance.get(n);
+        } catch (IndexOutOfBoundsException e) {
+            thrown = true;
+        }
+        assertTrue(thrown);
     }
+         
+ 
+    @Test
+    public void testGetGBoundary() {
+        System.out.println("get boundary");
+        int n = 0;
+        boolean access = false;
+        GroupOfCards instance = new GroupOfCards();
+        Card result = instance.get(n);
+        if (!(String.valueOf(instance.get(n))).isEmpty()) {
+            access = true;
+            assertTrue(access);
+        }
+    }    
     
 }
