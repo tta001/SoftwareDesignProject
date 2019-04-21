@@ -17,9 +17,9 @@ public class Game {
     public static void main(String[] args) {
        
         GroupOfCards set1 = new GroupOfCards();
-        System.out.println(set1);
+        //System.out.println(set1);
         GroupOfCards set2 = new GroupOfCards();
-        System.out.println(set2);
+        //System.out.println(set2);
         
         gameStart(set1, set2);
  
