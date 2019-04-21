@@ -1,3 +1,5 @@
+package ca.sheridancollege.project;
+
 /*
  * This project simulates a card matching game using a deck of cards. 
  */
