@@ -15,13 +15,19 @@ import java.util.Scanner;
 public class Game {
     
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+       
         GroupOfCards set1 = new GroupOfCards();
         System.out.println(set1);
         GroupOfCards set2 = new GroupOfCards();
         System.out.println(set2);
+        
+        gameStart(set1, set2);
+ 
+    }
+    
+    public static void gameStart(GroupOfCards set1, GroupOfCards set2) {
         char keepGoing = 'Y';
-        int correctMatches = 0;
+        Scanner in = new Scanner(System.in);
         
         System.out.println("Welcome to Flippin' Matchin' ");
         do {
@@ -54,7 +60,8 @@ public class Game {
             }
 
         } while (keepGoing == 'Y');
- 
+        
     }
+    
 }
 
