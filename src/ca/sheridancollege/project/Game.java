@@ -1,64 +1,59 @@
-/**
- * SYST 17796 Project Winter 2019 Base code.
- * Students can modify and extend to implement their game.
- * Add your name as a modifier and the date!
- */
-package ca.sheridancollege.project;
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+/*
+ * This project simulates a card matching game using a deck of cards. 
+ */
 
 /**
- * The class that models your game. You should create a more specific
- * child of this class and instantiate the methods given.
- * @author dancye, 2018
+ *
+ * @author ttta
  */
-public abstract class Game 
-{
-    private final String gameName;//the title of the game
-    private ArrayList <Player> players;// the players of the game
+public class Game {
     
-    public Game(String givenName)
-    {
-        gameName = givenName;
-        players = new ArrayList();
-    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        GroupOfCards set1 = new GroupOfCards();
+        System.out.println(set1);
+        GroupOfCards set2 = new GroupOfCards();
+        System.out.println(set2);
+        char keepGoing = 'Y';
+        int correctMatches = 0;
+        
+        System.out.println("Welcome to Flippin' Matchin' ");
+        do {
+            System.out.print("Please choose a number from 1 - 13: ");
+            int select1 = in.nextInt();
+            if (select1 < 1 || select1 > 13) {
+                System.out.println("Sorry, that is not a valid number.");
+                System.out.println("Please enter a number between 1 - 13.");
+                select1 = in.nextInt();
+            }
+            int num1 = select1 - 1;
+            System.out.println("You have selected: " + set1.get(num1));
+            System.out.print("Please choose a second number from 1 - 13: ");
+            int select2 = in.nextInt();
+            if (select2 < 1 || select2 > 13) {
+                System.out.println("Sorry, that is not a valid number.");
+                System.out.println("Please enter a number between 1 - 13.");
+                select2 = in.nextInt();
+            }
+            int num2 = select2 - 1;
+            System.out.println("You have selected: " + set2.get(num2));
+            
+            if (String.valueOf(set1.get(num1)).equals(String.valueOf(set2.get(num2)))) {
+                System.out.println("You got a match!");
+                keepGoing = in.next().toUpperCase().charAt(0);
+            } else {
+                System.out.println("Sorry, these cards don't match. Try Again.");
+                System.out.println("Would you like to keep playing? y/n");
+                keepGoing = in.next().toUpperCase().charAt(0);
+            }
 
-    /**
-     * @return the gameName
-     */
-    public String getGameName() 
-    {
-        return gameName;
+        } while (keepGoing == 'Y');
+ 
     }
-    
-     /**
-     * @return the players of this game
-     */
-    public ArrayList <Player> getPlayers() 
-    {
-        return players;
-    }
+}
 
-    /**
-     * @param players the players of this game
-     */
-    public void setPlayers(ArrayList <Player> players) 
-    {
-        this.players = players;
-    }
-    
-    /**
-     * Play the game. This might be one method or many method calls depending
-     * on your game.
-     */
-    public abstract void play();
-    
-    /**
-     * When the game is over, use this method to declare and display a winning
-     * player.
-     */
-    public abstract void declareWinner();
-
-   
-    
-}//end class

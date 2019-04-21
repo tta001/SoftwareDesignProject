@@ -1,57 +1,47 @@
-/**
- * SYST 17796 Project Winter 2019 Base code.
- * Students can modify and extend to implement their game.
- * Add your name as a modifier and the date!
- */
-package ca.sheridancollege.project;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
-/**
- * A concrete class that represents any grouping of cards for a Game.
- * HINT, you might want to subclass this more than once.
- * The group of cards has a maximum size attribute which is flexible for reuse.
- * @author dancye
+/*
+ * This project simulates a card matching game using a deck of cards. 
  */
-public class GroupOfCards 
-{
-   
-    //The group of cards, stored in an ArrayList
-    private ArrayList <Card> cards;
-    private int size;//the size of the grouping
-    
-    public GroupOfCards(int givenSize)
-    {
-        size = givenSize;
-    }
-    
-    /**
-     * A method that will get the group of cards as an ArrayList
-     * @return the group of cards.
-     */
-    public ArrayList<Card> showCards()
-    {
-        return cards;
-    }
-    
-    public void shuffle()
-    {
-        Collections.shuffle(cards);
-    }
 
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
-    }
+/**
+ *
+ * @author ttta
+ */
 
-    /**
-     * @param givenSize the max size for the group of cards
-     */
-    public void setSize(int givenSize) {
-        size = givenSize;
+public class GroupOfCards {
+
+    //Sets the deck to have 13 cards.
+    private final static int DECK_SIZE = 13;
+    private Card[] cards = new Card[DECK_SIZE];
+    private ArrayList<Card> cardDeck;
+
+    //Assigning each card with a suit and rank
+    public GroupOfCards() {
+        int i = 0;
+        for (Card.Value value : Card.Value.values()) {
+            cards[i] = (new Card(value));
+            i++;
+        }
+        //Instantiates the cards to the card deck and then Shuffles the deck.
+        cardDeck = new ArrayList<>(Arrays.asList(cards));
+        Collections.shuffle(cardDeck);
     }
     
-}//end class
+    public Card get(int n) {
+        return cardDeck.get(n);
+    }
+    
+    //Overrides the toString method to return a string representation of the 
+    //deck of cards.
+    @Override
+    public String toString() {
+        return String.valueOf(cardDeck);
+    }
+    
+    
+}
+    
